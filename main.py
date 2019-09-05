@@ -11,8 +11,6 @@ entity.update({
 })
 client.put(entity)
 
-
-
 @app.route('/')
 def root():
     customer = client.query(kind='IKEACustomer')
@@ -21,14 +19,17 @@ def root():
     print(dummy_cust)
     dummy_emp = list(employee.fetch())
     print(dummy_emp)
-
-
     return render_template('index.html', customer=dummy_cust, employee=dummy_emp)
 
+@app.route('/getCustomers/<id>')
+def child(id):
+    customer = client.query(kind='IKEACustomer')
+    customer.add_filter('customer_id', '=', int(id))
+    dummy_cust = list(customer.fetch())
 
-
-
+    return render_template('index.html', customer=dummy_cust)
 
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
+    
