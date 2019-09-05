@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <title>IKEA CLOUD FUN </title>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>IKEA CLOUD FUN</h1>
+
+  <h2>GET CUSTOMER DETAILS</h2>
+  {% for cust in customer %}
+    <p>{{ cust.customer_name }}  - ({{ cust.customer_id }}) </p>
+  {% endfor %}
+
+<h2>GET EMPLOYEE</h2>
+  {% for emp in employee %}
+    <p>{{ emp.foo }}  - ({{ emp.baz }}) </p>
+  {% endfor %}
+
+
+</body>
+</html>
